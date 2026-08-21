@@ -1,11 +1,13 @@
 'use strict'
 
 ////////////////DOM Elements///////////////////
+
 const learnMoreBtn = document.querySelector('.learn-more-btn')
 const brandHeaderLink = document.getElementById('brand')
 const siteNav = document.getElementById('site-nav');
 const headerActionEle = document.querySelector('.header-actions')
-
+const heroLinks = document.querySelector('.hero-actions')
+const productGrid = document.querySelector('.products-grid')
 
 ////////////////////// functionality ///////////////////
 
@@ -45,4 +47,25 @@ headerActionEle.addEventListener('click', function (e) {
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' })
   }
 });
+
+// handling the scroll functionality for the the hero secton links
+heroLinks.addEventListener('click', function (e) {
+  e.preventDefault()
+
+  if (e.target.classList.contains('btn')) {
+    document.querySelector(e.target.getAttribute('href')).scrollIntoView({ behavior: 'smooth' })
+  }
+});
+// handling the links on the product grid div
+
+productGrid.addEventListener('click', function (e) {
+  e.preventDefault()
+
+  if (e.target.classList.contains('btn--link')) {
+    document.querySelector(e.target.getAttribute('href')).scrollIntoView({ behavior: 'smooth' })
+  }
+
+});
+
+
 
