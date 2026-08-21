@@ -1,0 +1,14 @@
+'use strict'
+
+////////////////DOM Elements///////////////////
+
+const siteNav = document.getElementById('site-nav');
+
+
+
+
+
+
+////////////////////// functionality ///////////////////
+
+
