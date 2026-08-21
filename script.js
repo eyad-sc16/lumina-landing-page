@@ -8,6 +8,7 @@ const siteNav = document.getElementById('site-nav');
 const headerActionEle = document.querySelector('.header-actions')
 const heroLinks = document.querySelector('.hero-actions')
 const productGrid = document.querySelector('.products-grid')
+const caseStudyGrid = document.querySelector('.cases-grid')
 
 ////////////////////// functionality ///////////////////
 
@@ -68,4 +69,12 @@ productGrid.addEventListener('click', function (e) {
 });
 
 
+// implementing the smooth scroll to the links in the cases grid container
 
+caseStudyGrid.addEventListener('click', function (e) {
+  e.preventDefault()
+
+  if (e.target.classList.contains('btn--link')) {
+    document.querySelector(e.target.getAttribute('href')).scrollIntoView({ behavior: 'smooth' })
+  }
+});
