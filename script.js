@@ -21,57 +21,56 @@ const footerLangLastLink = footer.querySelector('.footer-lang').lastElementChild
 
 
 ////////////////////// functionality ///////////////////
-const scrollIntoMethod = function (eventElement, clickedBtnClass) {
-  eventElement.addEventListener('click', function (e) {
-    e.preventDefault()
+const scrollIntoMethod = function (e) {
 
-    const clicked = e.target.closest(clickedBtnClass)
+  e.preventDefault()
 
-    // Garde clause
-    if (!clicked) return
+  const clicked = e.target.closest(this)
 
-    document.querySelector(clicked.getAttribute('href')).scrollIntoView({ behavior: 'smooth' })
-  })
+  // Garde clause
+  if (!clicked) return
+
+  document.querySelector(clicked.getAttribute('href')).scrollIntoView({ behavior: 'smooth' })
 };
 
 // handling defult links
-const handlingDefultLinks = function (eventElement) {
-  eventElement.addEventListener('click', function (e) {
-    e.preventDefault()
-  });
-}
+
 
 // handling scroll to learn more btn 
-scrollIntoMethod(learnMoreBtn, 'a')
+learnMoreBtn.addEventListener('click', scrollIntoMethod.bind('a'))
 
 // handling brand scroll 
-scrollIntoMethod(brandHeaderLink, 'a')
-scrollIntoMethod(footerBrandlink, 'a')
+brandHeaderLink.addEventListener('click', scrollIntoMethod.bind('a'))
+footerBrandlink.addEventListener('click', scrollIntoMethod.bind('a'))
 
 // handling the smooth navigaton of the nav links
-scrollIntoMethod(siteNav, 'a')
+siteNav.addEventListener('click', scrollIntoMethod.bind('a'))
 
 // handling funtionality of header actons part
-scrollIntoMethod(headerActionEle, 'a')
+headerActionEle.addEventListener('click', scrollIntoMethod.bind('a'))
 
 // handling the scroll functionality for the the hero secton links
-scrollIntoMethod(heroLinks, 'a')
+heroLinks.addEventListener('click', scrollIntoMethod.bind('a'))
 
 // handling the links on the product grid div
-scrollIntoMethod(productGrid, '.btn--link')
+productGrid.addEventListener('click', scrollIntoMethod.bind('.btn--link'))
 
 // implementing the smooth scroll to the links in the cases grid container
-scrollIntoMethod(caseStudyGrid, '.btn--link')
+caseStudyGrid.addEventListener('click', scrollIntoMethod.bind('.btn--link'))
 
 // implelmenting smooth scroll to the book a demp btn
-scrollIntoMethod(cetaBannerSection, '.btn--dark')
+cetaBannerSection.addEventListener('click', scrollIntoMethod.bind('.btn--dark'))
 
 // implementing smooth scroll to conpany name in the footer
-scrollIntoMethod(footerColProducts, '.footer-link')
-scrollIntoMethod(footerColResources, '.footer-link')
-scrollIntoMethod(footerColCompany, '.footer-link')
+footerColProducts.addEventListener('click', scrollIntoMethod.bind('.footer-link'))
+footerColResources.addEventListener('click', scrollIntoMethod.bind('.footer-link'))
+footerColCompany.addEventListener('click', scrollIntoMethod.bind('.footer-link'))
 
 // handling linkd with no target links
-handlingDefultLinks(footerColLegal)
-handlingDefultLinks(footerLangFirstLink)
-handlingDefultLinks(footerLangLastLink)
+footerColLegal.addEventListener('click', function (e) { e.preventDefault() })
+footerLangFirstLink.addEventListener('click', function (e) {
+  e.preventDefault()
+})
+footerLangLastLink.addEventListener('click', function (e) {
+  e.preventDefault()
+})
