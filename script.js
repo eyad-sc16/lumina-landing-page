@@ -4,6 +4,7 @@
 
 const learnMoreBtn = document.querySelector('.learn-more-btn')
 const brandHeaderLink = document.querySelector('.brand')
+const nav = document.querySelector('.header-inner')
 const siteNav = document.getElementById('site-nav');
 const headerActionEle = document.querySelector('.header-actions')
 const heroLinks = document.querySelector('.hero-actions')
@@ -74,3 +75,18 @@ footerLangFirstLink.addEventListener('click', function (e) {
 footerLangLastLink.addEventListener('click', function (e) {
   e.preventDefault()
 })
+
+// Implement link color changing functionality
+const handlingColor = function (e) {
+  const link = e.target.closest('.nav-link');
+  if (!link) return
+  const sibilings = link.closest('.header-inner').querySelectorAll('.nav-link');
+
+  sibilings.forEach(s => {
+    if (s !== link) {
+      s.style.color = `var(${this})`
+    }
+  })
+};
+nav.addEventListener('mouseover', handlingColor.bind('--sunshine-800'));
+nav.addEventListener('mouseout', handlingColor.bind('--slate'))
