@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --primary: #fa520f;
   --primary-deep: #cc3a05;
   --on-primary: #ffffff;
@@ -58,6 +58,50 @@
 
   --header-h: 64px;
   --ease: 180ms ease;
+}
+
+/* Effects  */
+/* general fade Up */
+.fade-up {
+  transform: translateY(6rem);
+  opacity: 0.6;
+}
+
+/* titles efffectes (fade up effect) */
+.fade-up-sections-titles {
+  transform: translateY(7rem);
+  opacity: 0.8;
+}
+
+.fade-up-effect-title {
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in-out;
+}
+
+/* section-eyebrow (fade up effect) */
+
+
+.general-fade-up-elements {
+  transition: transform 0.25s ease-in;
+}
+
+/* section-eyebrow (fade up effect) */
+.fade-up-section-lede {
+  transform: translateY(7rem);
+}
+
+.section-lede {
+  transition: transform 0.1s ease-in;
+}
+
+/* card-feature (fade up effect) */
+
+.card-blur-effect {
+  filter: blur(18px);
+}
+
+/* grid-parts (fade up effect) */
+.grid-fade-move-up {
+  transition: transform 0.2s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 * {
@@ -689,7 +733,7 @@ div[id] {
   flex-direction: column;
   align-items: flex-start;
   gap: var(--sp-md);
-  transition: box-shadow var(--ease), border-color var(--ease);
+  transition: box-shadow var(--ease), border-color var(--ease), filter 0.4s ease;
 }
 
 .card--feature:hover {
@@ -1003,6 +1047,7 @@ div[id] {
     opacity: 0;
     transform: translateY(-8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

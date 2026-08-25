@@ -19,9 +19,20 @@ const footerColCompany = footer.querySelector('.footer-col-company')
 const footerColLegal = footer.querySelector('.footer-col-legal')
 const footerLangFirstLink = footer.querySelector('.footer-lang').firstElementChild
 const footerLangLastLink = footer.querySelector('.footer-lang').lastElementChild
+const stateGrid = document.querySelector('.stats-grid')
+const randomalyNumsContianers = document.querySelectorAll('.randomaly-containers')
+const allGeneralFadeelements = document.querySelectorAll('.general-fade-up-elements')
+const allH2 = document.querySelectorAll('.fade-up-effect-title')
+const allSecrionsLede = document.querySelectorAll('.section-lede')
+const allCardFeatures = document.querySelectorAll('.card--feature')
+const originalShowCases = document.querySelector('.showcase-stats').querySelectorAll('.showcase-num')
 
 
 ////////////////////// functionality ///////////////////
+const randomInt = function (max, min) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+};
+
 const scrollIntoMethod = function (e) {
 
   e.preventDefault()
@@ -90,3 +101,85 @@ const handlingColor = function (e) {
 };
 nav.addEventListener('mouseover', handlingColor.bind('--sunshine-800'));
 nav.addEventListener('mouseout', handlingColor.bind('--slate'))
+
+///////////////Scroll Events funcionality ////////////////
+
+let conter = 20
+const randomDisplayFuncionality = function (enties, observe) {
+  enties.forEach(entry => {
+
+    if (!entry.isIntersecting) return;
+
+    const originalElements = document.querySelectorAll('.randomaly-nums-effects')
+
+    console.log(originalElements);
+
+    const originalContentsArr = []
+
+    originalElements.forEach((ele) => {
+      originalContentsArr.push(ele.textContent)
+    });
+    // console.log(originalElements);
+    console.log(originalContentsArr);
+
+    const timer = setInterval(() => {
+      const randomalyNums = document.querySelectorAll('.randomaly-nums-effects')
+      randomalyNums.forEach(numContent => numContent.textContent = randomInt(20, 1))
+
+      conter--
+      if (conter === 0) {
+        clearInterval(timer)
+        randomalyNums.forEach((numContent, i) => numContent.textContent = originalContentsArr[i])
+        conter = 20
+      }
+    }, 40)
+
+    observe.unobserve(entry.target)
+  })
+};
+
+const randomObserver = new IntersectionObserver(randomDisplayFuncionality, { root: null, threshold: 0.2 })
+randomalyNumsContianers.forEach(randomContainer => randomObserver.observe(randomContainer))
+
+
+// implementing the fade up effects on sections titles (h2) on scroll
+const interObservAPIFuncionality = function (enties, observer) {
+  enties.forEach(entry => {
+    if (!entry.isIntersecting) return
+
+    entry.target.classList.remove(this)
+    observer.unobserve(entry.target)
+  });
+};
+
+
+const h2Observer = new IntersectionObserver(interObservAPIFuncionality.bind('fade-up-sections-titles'), { root: null, threshold: 0, rootMargin: '20px' })
+allH2.forEach(h2 => {
+  h2Observer.observe(h2)
+  h2.classList.add('fade-up-sections-titles')
+});
+
+// implementing the fade up effect on general-fade-up-elements
+const sectionEyebrowObserver = new IntersectionObserver(interObservAPIFuncionality.bind('fade-up'), { root: null, threshold: 0.12 })
+allGeneralFadeelements.forEach(eyebrow => {
+  sectionEyebrowObserver.observe(eyebrow)
+  eyebrow.classList.add('fade-up')
+});
+
+
+// implementing the fade up effect on sections lede text
+
+const ledeObserver = new IntersectionObserver(interObservAPIFuncionality.bind('fade-up-section-lede'), { root: null, threshold: 0, rootMargin: '-20px' })
+allSecrionsLede.forEach(lede => {
+  ledeObserver.observe(lede)
+  lede.classList.add('fade-up-section-lede')
+});
+
+// implementing the fade up effect on sections lede text
+
+const cardFeaturesObserver = new IntersectionObserver(interObservAPIFuncionality.bind('card-blur-effect'), { root: null, threshold: 0.33 })
+allCardFeatures.forEach(card => {
+  cardFeaturesObserver.observe(card)
+  card.classList.add('card-blur-effect')
+});
+
