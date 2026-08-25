@@ -67,18 +67,8 @@
   opacity: 0.6;
 }
 
-/* titles efffectes (fade up effect) */
-.fade-up-sections-titles {
-  transform: translateY(7rem);
-  opacity: 0.8;
-}
-
-.fade-up-effect-title {
-  transition: transform 0.3s ease-in, opacity 0.3s ease-in-out;
-}
 
 /* section-eyebrow (fade up effect) */
-
 
 .general-fade-up-elements {
   transition: transform 0.25s ease-in;

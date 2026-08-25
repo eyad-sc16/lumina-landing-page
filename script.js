@@ -21,10 +21,7 @@ const footerLangFirstLink = footer.querySelector('.footer-lang').firstElementChi
 const footerLangLastLink = footer.querySelector('.footer-lang').lastElementChild
 const stateGrid = document.querySelector('.stats-grid')
 const randomalyNumsContianers = document.querySelectorAll('.randomaly-containers')
-const allGeneralFadeelements = document.querySelectorAll('.general-fade-up-elements')
-const allH2 = document.querySelectorAll('.fade-up-effect-title')
-const allSecrionsLede = document.querySelectorAll('.section-lede')
-const allCardFeatures = document.querySelectorAll('.card--feature')
+
 const originalShowCases = document.querySelector('.showcase-stats').querySelectorAll('.showcase-num')
 
 
@@ -141,45 +138,45 @@ const randomDisplayFuncionality = function (enties, observe) {
 const randomObserver = new IntersectionObserver(randomDisplayFuncionality, { root: null, threshold: 0.2 })
 randomalyNumsContianers.forEach(randomContainer => randomObserver.observe(randomContainer))
 
+const allScrollElements = document.querySelectorAll('.fade-up-effect-title, .general-fade-up-elements, .section-lede, .card--feature');
+console.log(allScrollElements);
 
-// implementing the fade up effects on sections titles (h2) on scroll
 const interObservAPIFuncionality = function (enties, observer) {
   enties.forEach(entry => {
     if (!entry.isIntersecting) return
 
-    entry.target.classList.remove(this)
+    if (entry.target.classList.contains('general-fade-up-elements'))
+      entry.target.classList.remove('fade-up')
+
+    if (entry.target.classList.contains('section-lede'))
+      entry.target.classList.remove('fade-up-section-lede')
+
+
+    if (entry.target.classList.contains('card--feature'))
+      entry.target.classList.remove('card-blur-effect')
+
+
+    if (entry.target.classList.contains('fade-up-effect-title'))
+      entry.target.classList.remove('fade-up')
+
     observer.unobserve(entry.target)
+
   });
 };
 
-
-const h2Observer = new IntersectionObserver(interObservAPIFuncionality.bind('fade-up-sections-titles'), { root: null, threshold: 0, rootMargin: '20px' })
-allH2.forEach(h2 => {
-  h2Observer.observe(h2)
-  h2.classList.add('fade-up-sections-titles')
-});
-
-// implementing the fade up effect on general-fade-up-elements
-const sectionEyebrowObserver = new IntersectionObserver(interObservAPIFuncionality.bind('fade-up'), { root: null, threshold: 0.12 })
-allGeneralFadeelements.forEach(eyebrow => {
-  sectionEyebrowObserver.observe(eyebrow)
-  eyebrow.classList.add('fade-up')
-});
+const ScrollElementsObserver = new IntersectionObserver(interObservAPIFuncionality, { root: null, threshold: 0.15 })
+allScrollElements.forEach(scrollEle => {
+  ScrollElementsObserver.observe(scrollEle)
 
 
-// implementing the fade up effect on sections lede text
+  if (scrollEle.classList.contains('general-fade-up-elements'))
+    scrollEle.classList.add('fade-up')
 
-const ledeObserver = new IntersectionObserver(interObservAPIFuncionality.bind('fade-up-section-lede'), { root: null, threshold: 0, rootMargin: '-20px' })
-allSecrionsLede.forEach(lede => {
-  ledeObserver.observe(lede)
-  lede.classList.add('fade-up-section-lede')
-});
 
-// implementing the fade up effect on sections lede text
+  if (scrollEle.classList.contains('section-lede'))
+    scrollEle.classList.add('fade-up-section-lede')
 
-const cardFeaturesObserver = new IntersectionObserver(interObservAPIFuncionality.bind('card-blur-effect'), { root: null, threshold: 0.33 })
-allCardFeatures.forEach(card => {
-  cardFeaturesObserver.observe(card)
-  card.classList.add('card-blur-effect')
-});
 
+  if (scrollEle.classList.contains('card--feature'))
+    scrollEle.classList.add('card-blur-effect')
+})
