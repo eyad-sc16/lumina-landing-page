@@ -1,7 +1,8 @@
 'use strict'
 
 ////////////////DOM Elements///////////////////
-
+const navToggle = document.querySelector('.nav-toggle')
+const year = document.querySelector('.year')
 const learnMoreBtn = document.querySelector('.learn-more-btn')
 const brandHeaderLink = document.querySelector('.brand')
 const nav = document.querySelector('.header-inner')
@@ -12,7 +13,7 @@ const productGrid = document.querySelector('.products-grid')
 const caseStudyGrid = document.querySelector('.cases-grid')
 const cetaBannerSection = document.querySelector('.cta-banner__actions')
 const footer = document.querySelector('footer')
-const footerBrandlink = document.querySelector('.footer-brand');
+const footerBrandlink = document.querySelector('.footer-brand .brand');
 const footerColResources = footer.querySelector('.footer-col-resources')
 const footerColProducts = footer.querySelector('.footer-col-products')
 const footerColCompany = footer.querySelector('.footer-col-company')
@@ -21,7 +22,6 @@ const footerLangFirstLink = footer.querySelector('.footer-lang').firstElementChi
 const footerLangLastLink = footer.querySelector('.footer-lang').lastElementChild
 const stateGrid = document.querySelector('.stats-grid')
 const randomalyNumsContianers = document.querySelectorAll('.randomaly-containers')
-
 const originalShowCases = document.querySelector('.showcase-stats').querySelectorAll('.showcase-num')
 
 
@@ -38,12 +38,25 @@ const scrollIntoMethod = function (e) {
 
   // Garde clause
   if (!clicked) return
-
   document.querySelector(clicked.getAttribute('href')).scrollIntoView({ behavior: 'smooth' })
 };
 
 // handling defult links
 
+// handling mobile nav toggle
+const siteHeader = document.getElementById('site-header');
+navToggle.addEventListener('click', function () {
+  const isOpen = siteHeader.classList.toggle('is-open');
+  this.setAttribute('aria-expanded', isOpen);
+});
+
+// close mobile menu when a link is clicked
+siteNav.addEventListener('click', function (e) {
+  if (e.target.tagName === 'A') {
+    siteHeader.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+});
 
 // handling scroll to learn more btn 
 learnMoreBtn.addEventListener('click', scrollIntoMethod.bind('a'))
@@ -77,6 +90,7 @@ footerColCompany.addEventListener('click', scrollIntoMethod.bind('.footer-link')
 
 // handling linkd with no target links
 footerColLegal.addEventListener('click', function (e) { e.preventDefault() })
+
 footerLangFirstLink.addEventListener('click', function (e) {
   e.preventDefault()
 })
@@ -100,6 +114,12 @@ nav.addEventListener('mouseover', handlingColor.bind('--sunshine-800'));
 nav.addEventListener('mouseout', handlingColor.bind('--slate'))
 
 ///////////////Scroll Events funcionality ////////////////
+// implementing dynamic year  (date formate functionality )
+const dateFormating = function (date) {
+  return new Intl.DateTimeFormat(navigator.language, { year: 'numeric' }).format(date);
+};
+year.textContent = dateFormating(new Date());
+
 
 let conter = 20
 const randomDisplayFuncionality = function (enties, observe) {
@@ -109,7 +129,6 @@ const randomDisplayFuncionality = function (enties, observe) {
 
     const originalElements = document.querySelectorAll('.randomaly-nums-effects')
 
-    console.log(originalElements);
 
     const originalContentsArr = []
 
@@ -117,7 +136,6 @@ const randomDisplayFuncionality = function (enties, observe) {
       originalContentsArr.push(ele.textContent)
     });
     // console.log(originalElements);
-    console.log(originalContentsArr);
 
     const timer = setInterval(() => {
       const randomalyNums = document.querySelectorAll('.randomaly-nums-effects')
@@ -139,7 +157,6 @@ const randomObserver = new IntersectionObserver(randomDisplayFuncionality, { roo
 randomalyNumsContianers.forEach(randomContainer => randomObserver.observe(randomContainer))
 
 const allScrollElements = document.querySelectorAll('.fade-up-effect-title, .general-fade-up-elements, .section-lede, .card--feature');
-console.log(allScrollElements);
 
 const interObservAPIFuncionality = function (enties, observer) {
   enties.forEach(entry => {
@@ -180,3 +197,25 @@ allScrollElements.forEach(scrollEle => {
   if (scrollEle.classList.contains('card--feature'))
     scrollEle.classList.add('card-blur-effect')
 })
+
+// implementing lazy loading for imges
+
+const caseStudyImges = document.querySelector('.case-studies').querySelectorAll('img')
+// console.log(caseStudyImges);
+
+const lazyLoading = function (enties, observer) {
+  enties.forEach(entry => {
+    if (!entry.isIntersecting) return
+
+    entry.target.classList.remove('blur-img')
+
+  })
+}
+const caseImgesObserber = new IntersectionObserver(lazyLoading, { root: null, threshold: 0 })
+caseStudyImges.forEach(img => {
+  caseImgesObserber.observe(img)
+  img.classList.add('blur-img')
+})
+
+
+

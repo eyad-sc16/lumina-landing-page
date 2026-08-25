@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --primary: #fa520f;
   --primary-deep: #cc3a05;
   --on-primary: #ffffff;
@@ -62,9 +62,14 @@
 
 /* Effects  */
 /* general fade Up */
+
+.blur-img {
+  filter: blur(30px);
+}
+
 .fade-up {
   transform: translateY(6rem);
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 
@@ -77,6 +82,7 @@
 /* section-eyebrow (fade up effect) */
 .fade-up-section-lede {
   transform: translateY(7rem);
+  opacity: 0.8;
 }
 
 
@@ -165,7 +171,7 @@ div[id] {
   font-size: 16px;
   color: var(--slate);
   max-width: 560px;
-  transition: transform 0.25s ease-in;
+  transition: all 0.25s ease-in;
 }
 
 .section-head {
@@ -803,6 +809,7 @@ div[id] {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: filter 0.25s ease-in-out;
 }
 
 .case-photo--orange {
@@ -1586,6 +1593,6 @@ div[id] {
   }
 
   .hero-media {
-    margin: 0 auto var(--sp-xxxl);
+    display: none;
   }
 }
