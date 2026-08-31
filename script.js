@@ -201,17 +201,21 @@ allScrollElements.forEach(scrollEle => {
 // implementing lazy loading for imges
 
 const caseStudyImges = document.querySelector('.case-studies').querySelectorAll('img')
-// console.log(caseStudyImges);
+console.log(caseStudyImges);
 
 const lazyLoading = function (enties, observer) {
   enties.forEach(entry => {
     if (!entry.isIntersecting) return
+    entry.target.src = entry.target.dataset.src
+    entry.target.addEventListener('load', function () {
+      entry.target.classList.remove('blur-img')
+      observer.unobserve(entry.target)
 
-    entry.target.classList.remove('blur-img')
-
+    })
   })
+
 }
-const caseImgesObserber = new IntersectionObserver(lazyLoading, { root: null, threshold: 0 })
+const caseImgesObserber = new IntersectionObserver(lazyLoading, { root: null, threshold: 0, rootMargin: '250px' })
 caseStudyImges.forEach(img => {
   caseImgesObserber.observe(img)
   img.classList.add('blur-img')
