@@ -60,6 +60,24 @@
       <div class="header-actions">
         <a class="header-contact nav-link" href="#contact">Contact Sales</a>
         <a class="btn btn--dark header-cta" href="#demo">Book a Demo</a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+          <svg class="theme-icon sun-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
         <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"
           aria-label="Toggle menu">
           <span></span><span></span><span></span>
@@ -137,7 +155,7 @@
     </section>
 
     <!-- Logo wall -->
-    <section class="logo-wall" aria-label="Customers and partners">
+    <section class="logo-wall outer--sections" aria-label="Customers and partners">
       <div class="container general-fade-up-elements">
         <p class="section-eyebrow">Backed by the ecosystem that moves MENA</p>
         <ul class="logo-list">
@@ -173,17 +191,17 @@
         </div>
       </div>
     </section><!-- Products -->
-    <section class="products" id="products">
+    <section class="products outer--sections" id="products">
       <div class="container">
         <div class="section-head">
-          <p class="section-eyebrow general-fade-up-elements">Products</p>
-          <h2 class="section-title general-fade-up-elements">Four engines. One data platform.</h2>
+          <p class="section-eyebrow general-fade-up-elements sections--first-headers">Products</p>
+          <h2 class="section-title general-fade-up-elements outer--title">Four engines. One data platform.</h2>
           <p class="section-lede">Every Lumina product plugs into the same core â€” governed data, live pipelines, and
             models that learn from your operations.</p>
         </div>
         <div class="products-grid">
 
-          <article class="card card--feature card-first-row">
+          <article class="card card--feature card-first-row wight__background--containers">
             <div class="feature-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -207,7 +225,7 @@
               </svg></a>
           </article>
 
-          <article class="card card--feature card-first-row">
+          <article class="card card--feature card-first-row wight__background--containers">
             <div class="feature-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -231,7 +249,7 @@
               </svg></a>
           </article>
 
-          <article class="card card--feature card-second-row">
+          <article class="card card--feature card-second-row wight__background--containers">
             <div class="feature-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -256,7 +274,7 @@
               </svg></a>
           </article>
 
-          <article class="card card--feature card-second-row">
+          <article class="card card--feature card-second-row wight__background--containers">
             <div class="feature-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -286,11 +304,11 @@
     </section>
 
     <!-- Case studies -->
-    <section class="case-studies" id="customers">
+    <section class="case-studies wight__background--containers outer--sections" id="customers">
       <div class="container">
         <div class="section-head">
-          <p class="section-eyebrow general-fade-up-elements">Case studies</p>
-          <h2 class="section-title general-fade-up-elements">Proof, measured in business terms.</h2>
+          <p class="section-eyebrow general-fade-up-elements  sections--first-headers">Case studies</p>
+          <h2 class="section-title general-fade-up-elements inner--title">Proof, measured in business terms.</h2>
           <p class="section-lede">Real deployments across logistics, e-commerce and banking â€” with numbers the board
             can verify.</p>
         </div>
@@ -379,8 +397,8 @@
     <section class="testimonials">
       <div class="container">
         <div class="section-head">
-          <p class="section-eyebrow general-fade-up-elements">Testimonials</p>
-          <h2 class="section-title general-fade-up-elements">What operators say.</h2>
+          <p class="section-eyebrow general-fade-up-elements sections--first-headers">Testimonials</p>
+          <h2 class="section-title general-fade-up-elements outer--title">What operators say.</h2>
         </div>
         <div class="testimonials-grid general-fade-up-elements">
 
@@ -417,7 +435,7 @@
     </section>
 
     <!-- Credentials -->
-    <section class="credentials" aria-label="Certifications and partnerships">
+    <section class="credentials wight__background--containers" aria-label="Certifications and partnerships">
       <div class="container">
         <ul class="credential-list">
           <li><span class="badge badge--dark">ISO/IEC 27001</span><span class="credential-note">Certified</span></li>
@@ -435,8 +453,8 @@
     <section class="faq" id="faq">
       <div class="container">
         <div class="section-head">
-          <p class="section-eyebrow general-fade-up-elements">FAQ</p>
-          <h2 class="section-title general-fade-up-elements">Questions we hear most.</h2>
+          <p class="section-eyebrow general-fade-up-elements sections--first-headers">FAQ</p>
+          <h2 class="section-title general-fade-up-elements inner--title">Questions we hear most.</h2>
           <p class="section-lede">Everything you need to know about working with Lumina — from onboarding to data
             sovereignty.</p>
         </div>
@@ -543,11 +561,11 @@
     </section>
 
     <!-- Contact -->
-    <section class="contact" id="contact">
+    <section class="contact outer--sections" id="contact">
       <div class="container contact-inner">
         <div class="contact-copy" id="company">
-          <p class="section-eyebrow general-fade-up-elements">Book a demo</p>
-          <h2 class="section-title general-fade-up-elements">See your data light up.</h2>
+          <p class="section-eyebrow general-fade-up-elements sections--first-headers">Book a demo</p>
+          <h2 class="section-title general-fade-up-elements outer--title">See your data light up.</h2>
           <p class="section-lede">A 30-minute walkthrough tailored to your stack and your toughest operational question.
           </p>
           <ul class="check-list">
@@ -682,7 +700,7 @@
     <section class="cta-banner">
       <div class="container">
         <div class="cta-banner__panel general-fade-up-elements">
-          <h2 class="cta-banner__title">The next chapter of AI is yours.</h2>
+          <h2 class="cta-banner__title inner--title">The next chapter of AI is yours.</h2>
           <p class="cta-banner__lede">Join 40+ enterprises across the region running on Lumina intelligence.</p>
           <div class="cta-banner__actions">
             <a class="btn btn--dark" href="#demo">Book a Demo</a>

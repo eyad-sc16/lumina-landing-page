@@ -1,4 +1,8 @@
 :root {
+  --theme-titles-color: #F4F4F5;
+  --containers--background--color: #3a3a3a;
+  --containers--border--color: #5f5e5e;
+  --containers--card-border--color: #757575;
   --primary: #fa520f;
   --primary-deep: #cc3a05;
   --on-primary: #ffffff;
@@ -20,6 +24,8 @@
   --stone: #8a8a8a;
   --muted: #a8a8a8;
   --hairline: #e5e5e5;
+  --hairline-lite: #c5c5c5;
+
   --hairline-soft: #ededed;
   --hairline-strong: #c7c7c7;
   --canvas: #ffffff;
@@ -59,6 +65,144 @@
   --header-h: 64px;
   --ease: 180ms ease;
 }
+
+/* Theme handling */
+.dark__theme {
+  background: var(--charcoal);
+}
+
+.dark__theme section {
+  border-color: var(--containers--border--color);
+}
+
+.dark__theme .outer--sections li,
+.dark__theme .card-body,
+.dark__theme .wight__background--containers .section-lede,
+.dark__theme .outer--sections .section-lede {
+  color: var(--hairline-lite);
+}
+
+.dark__theme .outer--sections b,
+.dark__theme .wight__background--containers .card--case h3,
+.dark__theme .outer--sections .card--feature h3,
+.dark__theme .card--testimonial b,
+.dark__theme .outer--sections .card--feature li {
+  color: var(--on-primary);
+}
+
+.dark__theme .outer--title,
+.dark__theme .inner--title {
+  color: var(--theme-titles-color);
+}
+
+.dark__theme .outer--sections .card--feature {
+  border-color: var(--containers--card-border--color);
+}
+
+.dark__theme .wight__background--containers {
+  background: var(--containers--background--color);
+}
+
+.dark__theme .wight__background--containers .card--case,
+.dark__theme .outer--sections .card--feature li,
+.dark__theme .card--testimonial {
+  background: var(--slate);
+  border-color: var(--containers--card-border--color);
+}
+
+.dark__theme .wight__background--containers .card--case .case-result span,
+.dark__theme .wight__background--containers .credential-note,
+.dark__theme .card--testimonial span {
+  color: var(--muted);
+}
+
+.dark__theme .card--testimonial blockquote {
+  color: var(--hairline);
+}
+
+.dark__theme .card--testimonial .avatar {
+  color: var(--ink);
+}
+
+.dark__theme .contact-meta p {
+  color: var(--stone);
+}
+
+/* Cream sections dark theme (excluding footer) */
+.dark__theme .stats-band,
+.dark__theme .contact-form-panel,
+.dark__theme .cta-banner__panel,
+.dark__theme .faq {
+  background: var(--containers--background--color);
+  border-color: var(--containers--border--color);
+  color: var(--on-primary);
+}
+
+.dark__theme .stats-band .stat-value,
+.dark__theme .contact-form-panel .card-title,
+.dark__theme .cta-banner__panel .cta-banner__title,
+.dark__theme .faq .section-title {
+  color: var(--on-primary);
+}
+
+.dark__theme .stats-band .stat-label,
+.dark__theme .contact-form-panel .showcase-subtitle,
+.dark__theme .contact-form-panel .office-card__info span,
+.dark__theme .contact-form-panel .channel-item span,
+.dark__theme .contact-form-panel .channel-item a,
+.dark__theme .contact-meta p,
+.dark__theme .contact-meta a,
+.dark__theme .cta-banner__panel .cta-banner__lede,
+.dark__theme .faq .section-lede {
+  color: var(--hairline-lite);
+}
+
+.dark__theme .contact-form-panel .office-card {
+  background: var(--slate);
+  border-color: var(--containers--border--color);
+  color: var(--on-primary);
+}
+
+.dark__theme .contact-form-panel .office-card__info b,
+.dark__theme .contact-meta b {
+  color: var(--on-primary);
+}
+
+.dark__theme .faq .faq-item {
+  background: var(--slate);
+  border-color: var(--containers--border--color);
+}
+
+.dark__theme .faq .faq-item:hover {
+  border-color: var(--containers--card-border--color);
+}
+
+.dark__theme .faq .faq-item[open] {
+  border-color: var(--primary);
+  border-left: 3px solid var(--primary);
+}
+
+.dark__theme .faq .faq-question {
+  color: var(--on-primary);
+}
+
+.dark__theme .faq .faq-question:hover {
+  color: var(--sunshine-500);
+}
+
+.dark__theme .faq .faq-chevron {
+  color: var(--muted);
+}
+
+.dark__theme .faq .faq-item[open] .faq-chevron {
+  color: var(--primary);
+}
+
+.dark__theme .faq .faq-answer p {
+  color: var(--hairline-lite);
+}
+
+
 
 /* Effects  */
 /* general fade Up */
@@ -112,6 +256,7 @@ body {
   color: var(--ink);
   background: var(--canvas);
   -webkit-font-smoothing: antialiased;
+  transition: all 0.2s ease-in;
 }
 
 img {
@@ -147,6 +292,8 @@ section[id],
 div[id] {
   scroll-margin-top: calc(var(--header-h) + 8px);
 }
+
+
 
 .section-eyebrow {
   font-size: 11px;
@@ -377,6 +524,25 @@ div[id] {
 
 .header-contact:hover {
   color: var(--ink);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--r-md);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color var(--ease), background var(--ease);
+}
+
+.theme-toggle:hover {
+  border-color: var(--ink);
 }
 
 .nav-toggle {
