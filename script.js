@@ -36,19 +36,26 @@ initMobileNav();
 
 const initTheme = function () {
   const themeTogel = document.getElementById('theme-toggle')
-  
-  if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark__theme')
-  }
+  const sIcon = document.querySelector('.sun-icon')
+  const mIcon = document.querySelector('.moon-icon')
+
 
   themeTogel.addEventListener('click', function (e) {
     document.body.classList.toggle('dark__theme')
+    sIcon.classList.toggle('hidden')
+    mIcon.classList.toggle('hidden')
     if (document.body.classList.contains('dark__theme')) {
       localStorage.setItem('theme', 'dark')
     } else {
       localStorage.setItem('theme', 'light')
     }
   })
+
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark__theme')
+    sIcon.classList.toggle('hidden')
+    mIcon.classList.toggle('hidden')
+  }
 }
 initTheme()
 const initNavigation = function () {
