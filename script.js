@@ -39,23 +39,11 @@ const initTheme = function () {
   const sIcon = document.querySelector('.sun-icon')
   const mIcon = document.querySelector('.moon-icon')
 
-
   themeTogel.addEventListener('click', function (e) {
     document.body.classList.toggle('dark__theme')
     sIcon.classList.toggle('hidden')
     mIcon.classList.toggle('hidden')
-    if (document.body.classList.contains('dark__theme')) {
-      localStorage.setItem('theme', 'dark')
-    } else {
-      localStorage.setItem('theme', 'light')
-    }
   })
-
-  if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark__theme')
-    sIcon.classList.toggle('hidden')
-    mIcon.classList.toggle('hidden')
-  }
 }
 initTheme()
 const initNavigation = function () {
@@ -134,14 +122,11 @@ const initRandomNumbersEffect = function () {
       if (!entry.isIntersecting) return;
 
       const originalElements = document.querySelectorAll('.randomaly-nums-effects')
-
-
       const originalContentsArr = []
 
       originalElements.forEach((ele) => {
         originalContentsArr.push(ele.textContent)
       });
-      // console.log(originalElements);
 
       const timer = setInterval(() => {
         const randomalyNums = document.querySelectorAll('.randomaly-nums-effects')
@@ -177,10 +162,8 @@ const initScrollAnimations = function () {
       if (entry.target.classList.contains('section-lede'))
         entry.target.classList.remove('fade-up-section-lede')
 
-
       if (entry.target.classList.contains('card--feature'))
         entry.target.classList.remove('card-blur-effect')
-
 
       if (entry.target.classList.contains('fade-up-effect-title'))
         entry.target.classList.remove('fade-up')
@@ -190,18 +173,15 @@ const initScrollAnimations = function () {
     });
   };
 
-  const ScrollElementsObserver = new IntersectionObserver(interObservAPIFuncionality, { root: null, threshold: 0.15 })
+  const ScrollElementsObserver = new IntersectionObserver(interObservAPIFuncionality, { root: null, threshold: 0.1 })
   allScrollElements.forEach(scrollEle => {
     ScrollElementsObserver.observe(scrollEle)
-
 
     if (scrollEle.classList.contains('general-fade-up-elements'))
       scrollEle.classList.add('fade-up')
 
-
     if (scrollEle.classList.contains('section-lede'))
       scrollEle.classList.add('fade-up-section-lede')
-
 
     if (scrollEle.classList.contains('card--feature'))
       scrollEle.classList.add('card-blur-effect')
@@ -212,7 +192,6 @@ initScrollAnimations();
 // implementing lazy loading for imges
 const initLazyLoading = function () {
   const caseStudyImges = document.querySelector('.case-studies').querySelectorAll('img')
-  // console.log(caseStudyImges);
 
   const lazyLoading = function (enties, observer) {
     enties.forEach(entry => {

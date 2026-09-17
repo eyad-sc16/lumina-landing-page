@@ -12,13 +12,18 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script defer src="accessability.js"></script>
   <script defer src="script.js"></script>
 
 </head>
 
 <body>
-
   <div class="promo-banner" role="region" aria-label="Announcement">
     <div class="container promo-banner__inner">
       <p>New â€” Lumina Core Engine 3.0 brings 72-hour failure foresight to predictive maintenance.</p>
@@ -50,18 +55,20 @@
       </a>
 
       <nav class="site-nav" id="site-nav" aria-label="Primary">
-        <a class="nav-link" href="#products">Products</a>
-        <a class="nav-link" href="#customers">Customers</a>
-        <a class="nav-link" href="#company">Company</a>
-        <a class="nav-link" href="#resources">Resources</a>
-        <a class="nav-link" href="#contact">Contact</a>
+        <ul>
+          <li><a class="nav-link" href="#products">Products</a></li>
+          <li><a class="nav-link" href="#customers">Customers</a></li>
+          <li><a class="nav-link" href="#company">Company</a></li>
+          <li><a class="nav-link" href="#resources">Resources</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
       </nav>
 
       <div class="header-actions">
         <a class="header-contact nav-link" href="#contact">Contact Sales</a>
         <a class="btn btn--dark header-cta" href="#demo">Book a Demo</a>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
-          <svg class="theme-icon sun-icon hidden" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          <svg class="theme-icon sun-icon hidden" id="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="4"></circle>
             <path d="M12 2v2"></path>
@@ -73,8 +80,8 @@
             <path d="m6.34 17.66-1.41 1.41"></path>
             <path d="m19.07 4.93-1.41 1.41"></path>
           </svg>
-          <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg class="theme-icon moon-icon" id="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
           </svg>
         </button>
@@ -589,7 +596,6 @@
                 strategic hubs.</p>
             </div>
 
-
             <div class="office-cards">
               <div class="office-card office-card--hq">
                 <div class="office-card__icon">
@@ -758,44 +764,312 @@
 
         <nav class="footer-col footer-col-products" aria-label="Products">
           <h4>Products</h4>
-          <a class="footer-link" href="#products">Analytics Enterprise</a>
-          <a class="footer-link" href="#products">Predictive Maintenance</a>
-          <a class="footer-link" href="#products">Workflows &amp; OCR</a>
-          <a class="footer-link" href="#products">Enterprise LLM</a>
+          <ul>
+            <li><a class="footer-link" href="#products">Analytics Enterprise</a></li>
+            <li><a class="footer-link" href="#products">Predictive Maintenance</a></li>
+            <li><a class="footer-link" href="#products">Workflows &amp; OCR</a></li>
+            <li><a class="footer-link" href="#products">Enterprise LLM</a></li>
+          </ul>
         </nav>
 
         <nav class="footer-col footer-col-company" aria-label="Company">
           <h4>Company</h4>
-          <a class="footer-link" href="#company">About us</a>
-          <a class="footer-link" href="#company">Careers</a>
-          <a class="footer-link" href="#customers">Customers</a>
-          <a class="footer-link" href="#contact">Contact</a>
+          <ul>
+            <li><a class="footer-link" href="#company">About us</a></li>
+            <li><a class="footer-link" href="#company">Careers</a></li>
+            <li><a class="footer-link" href="#customers">Customers</a></li>
+            <li><a class="footer-link" href="#contact">Contact</a></li>
+          </ul>
         </nav>
 
         <nav class="footer-col footer-col-resources" aria-label="Resources">
           <h4>Resources</h4>
-          <a class="footer-link" href="#resources">Blog &amp; research</a>
-          <a class="footer-link" href="#resources">Whitepapers</a>
-          <a class="footer-link" href="#resources">Documentation</a>
-          <a class="footer-link" href="#resources">Security &amp; compliance</a>
+          <ul>
+            <li><a class="footer-link" href="#resources">Blog &amp; research</a></li>
+            <li><a class="footer-link" href="#resources">Whitepapers</a></li>
+            <li><a class="footer-link" href="#resources">Documentation</a></li>
+            <li><a class="footer-link" href="#resources">Security &amp; compliance</a></li>
+          </ul>
         </nav>
 
         <nav class="footer-col footer-col-legal" aria-label="Legal">
           <h4>Legal</h4>
-          <a class="footer-link" href="#">Privacy policy</a>
-          <a class="footer-link" href="#">Terms of service</a>
-          <a class="footer-link" href="#">GDPR</a>
-          <a class="footer-link" href="#">SOC 2 report</a>
+          <ul>
+            <li><a class="footer-link" href="#">Privacy policy</a></li>
+            <li><a class="footer-link" href="#">Terms of service</a></li>
+            <li><a class="footer-link" href="#">GDPR</a></li>
+            <li><a class="footer-link" href="#">SOC 2 report</a></li>
+          </ul>
         </nav>
       </div>
 
       <div class="footer-bottom">
-        <p>Â© <span class="year">2026</span> Lumina Tech Solutions FZ-LLC. All rights reserved.</p>
-        <p class="footer-lang"><a href="#" data-lang="ar">Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©</a> Â· <a href="#" data-lang="en">English</a>
+        <p>© <span class="year">2026</span> Lumina Tech Solutions FZ-LLC. All rights reserved.</p>
+        <p class="footer-lang"><a href="#" data-lang="ar">العربية</a> · <a href="#" data-lang="en">English</a>
         </p>
       </div>
     </div>
   </footer>
+
+  <!-- Accessibility Widget -->
+  <div class="a11y-widget" id="a11y-widget" aria-label="Accessibility Tools">
+    <!-- Floating Trigger Button -->
+    <button type="button" class="a11y-trigger-btn" id="a11y-trigger-btn" aria-label="Open Accessibility Menu"
+      aria-haspopup="dialog" aria-expanded="false">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="4.5" r="2.5"></circle>
+        <path d="m4 9 8 2 8-2"></path>
+        <path d="M12 11v11"></path>
+        <path d="m8 22 4-5 4 5"></path>
+      </svg>
+      <span class="a11y-trigger-tooltip">Accessibility</span>
+    </button>
+
+    <!-- Accessibility Panel Window -->
+    <section class="a11y-panel" id="a11y-panel" role="dialog" aria-modal="true" aria-labelledby="a11y-panel-title"
+      aria-hidden="true">
+      <header class="a11y-header">
+        <div class="a11y-header-info">
+          <span class="a11y-badge">Accessibility</span>
+          <h3 id="a11y-panel-title" class="a11y-title">Accessibility Tools</h3>
+        </div>
+        <div class="a11y-header-actions">
+          <button type="button" class="a11y-btn-reset" id="a11y-reset-btn" title="Reset all options">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+              <path d="M3 3v5h5"></path>
+            </svg>
+            <span>Reset</span>
+          </button>
+          <button type="button" class="a11y-btn-close" id="a11y-close-btn" aria-label="Close Accessibility Menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="a11y-body">
+
+        <!-- Section 1: Sign Language Features -->
+        <div class="a11y-group">
+          <div class="a11y-group-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"></path>
+              <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"></path>
+              <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"></path>
+              <path
+                d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15">
+              </path>
+            </svg>
+            <span>Sign Language</span>
+          </div>
+
+          <div class="a11y-sign-control">
+            <label for="a11y-sign-select" class="a11y-label">Sign Language Options</label>
+            <select id="a11y-sign-select" class="a11y-select sigh-languge-operations" name="sign-target">
+              <option value="none">Turn Off Sign Language</option>
+              <option value="all">Apply to Full Page</option>
+            </select>
+          </div>
+
+          <button type="button" class="a11y-action-btn" id="a11y-sign-font-btn" data-feature="sign-font">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 7V4h16v3"></path>
+              <path d="M9 20h6"></path>
+              <path d="M12 4v16"></path>
+            </svg>
+            <span>Toggle Sign Language Font</span>
+          </button>
+        </div>
+
+        <!-- Section 2: Text To Speech (Audio Reader) -->
+        <div class="a11y-group">
+          <div class="a11y-group-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+            <span>Text to Speech</span>
+          </div>
+
+          <label class="a11y-option-item" for="a11y-tts-checkbox">
+            <input type="checkbox" class="a11y-checkbox" id="a11y-tts-checkbox" data-feature="tts-selected">
+            <span>Read Selected Text</span>
+          </label>
+        </div>
+
+        <!-- Section 3: Range Sliders (Font Size, Line Height) -->
+        <div class="a11y-group range-group">
+          <div class="a11y-group-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="4 7 4 4 20 4 20 7"></polyline>
+              <line x1="9" x2="15" y1="20" y2="20"></line>
+              <line x1="12" x2="12" y1="4" y2="20"></line>
+            </svg>
+            <span>Dimensions & Text</span>
+          </div>
+
+          <div class="a11y-range-item">
+            <div class="a11y-range-header">
+              <label for="a11y-font-size-range" class="a11y-label">Font Size</label>
+              <span class="a11y-range-val" id="a11y-font-size-val">100%</span>
+            </div>
+            <input type="range" min="14" max="20" value="16" step="0.1" class="a11y-range range-font-size"
+              id="a11y-font-size-range" aria-label="Font size control">
+          </div>
+
+          <div class="a11y-range-item">
+            <div class="a11y-range-header">
+              <label for="a11y-line-height-range" class="a11y-label">Line Height</label>
+              <span class="a11y-range-val" id="a11y-line-height-val">1.5</span>
+            </div>
+            <input type="range" min="10" max="40" value="1.5" step="0.1" class="a11y-range range-line-hight"
+              id="a11y-line-height-range" aria-label="Line height control">
+          </div>
+        </div>
+
+        <!-- Section 4: Quick Accessibility Actions (Buttons) -->
+        <div class="a11y-group" id="a11y-group">
+          <div class="a11y-group-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect width="7" height="7" x="3" y="3" rx="1"></rect>
+              <rect width="7" height="7" x="14" y="3" rx="1"></rect>
+              <rect width="7" height="7" x="14" y="14" rx="1"></rect>
+              <rect width="7" height="7" x="3" y="14" rx="1"></rect>
+            </svg>
+            <span>Navigation Helpers</span>
+          </div>
+
+          <div class="a11y-grid a11y-grid--3">
+            <button type="button" class="a11y-feature-btn" id="a11y-btn-cursor" data-feature="large-cursor">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z"></path>
+                <path d="m13 13 6 6"></path>
+              </svg>
+              <span>Large Cursor</span>
+            </button>
+
+            <button type="button" class="a11y-feature-btn" id="a11y-btn-links" data-feature="highlight-links">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+              <span>Highlight Links</span>
+            </button>
+
+            <button type="button" class="a11y-feature-btn" id="a11y-btn-bold" data-feature="bold-text">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 12h9a4 4 0 0 1 0 8H6v-8Z"></path>
+                <path d="M6 4h8a4 4 0 0 1 0 8H6V4Z"></path>
+              </svg>
+              <span class="bold-text-span">Bold Text</span>
+            </button>
+
+            <button type="button" class="a11y-feature-btn" id="a11y-btn-readable-font" data-feature="readable-font">
+
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 8v8"></path>
+                <path d="M8 12h8"></path>
+              </svg>
+              <span>Readable Font</span>
+            </button>
+
+            <button type="button" class="a11y-feature-btn" id="a11y-btn-stop-anim" data-feature="stop-animation">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <rect width="4" height="8" x="9" y="8"></rect>
+                <rect width="4" height="8" x="15" y="8"></rect>
+              </svg>
+              <span>Stop Animation</span>
+            </button>
+
+            <button type="button" class="a11y-feature-btn" id="a11y-btn-char-spacing" data-feature="char-spacing">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 12h-4"></path>
+                <path d="M6 12H2"></path>
+                <path d="m18 8 4 4-4 4"></path>
+                <path d="m6 8-4 4 4 4"></path>
+                <path d="M12 4v16"></path>
+              </svg>
+              <span>Char Spacing</span>
+            </button>
+
+            <button type="button" class="a11y-feature-btn" id="a11y-btn-darkmode" data-feature="dark-mode">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+              </svg>
+              <span>Dark Mode</span>
+            </button>
+
+            <button type="button" class="a11y-feature-btn" id="a11y-btn-align" data-feature="text-align">
+              <!-- Center Icon -->
+              <svg class="a11y-align-icon a11y-align-center hidden" id="a11y-align-center" width="20" height="20"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" x2="6" y1="6" y2="6"></line>
+                <line x1="21" x2="3" y1="12" y2="12"></line>
+                <line x1="18" x2="6" y1="18" y2="18"></line>
+              </svg>
+
+              <!-- Right Icon -->
+              <svg class="a11y-align-icon a11y-align-right hidden" id="a11y-align-right" width="20" height="20"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <line x1="21" x2="3" y1="6" y2="6"></line>
+                <line x1="21" x2="9" y1="12" y2="12"></line>
+                <line x1="21" x2="6" y1="18" y2="18"></line>
+              </svg>
+              <!-- Default Icon (Left / End) -->
+              <svg class="a11y-align-icon a11y-align-default" id="a11y-align-left" width="20" height="20"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <line x1="21" x2="3" y1="6" y2="6"></line>
+                <line x1="15" x2="3" y1="12" y2="12"></line>
+                <line x1="18" x2="3" y1="18" y2="18"></line>
+              </svg>
+              <span>Text Align</span>
+            </button>
+
+            <button type="button" class="a11y-feature-btn" id="a11y-btn-ruler" data-feature="reading-ruler">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 8h20"></path>
+                <path d="M2 16h20"></path>
+                <path d="M6 8v3"></path>
+                <path d="M10 8v2"></path>
+                <path d="M14 8v3"></path>
+                <path d="M18 8v2"></path>
+              </svg>
+              <span>Reading Ruler</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- Reading Ruler Element -->
+  <div class="a11y-reading-ruler" aria-hidden="true"></div>
 </body>
 
 </html>
