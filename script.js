@@ -102,7 +102,7 @@ const initNavLinkHover = function () {
 };
 initNavLinkHover();
 
-///////////////Scroll Events funcionality ////////////////
+/////////////// Scroll Events functionality ////////////////
 // implementing dynamic year  (date formate functionality )
 const initDynamicYear = function () {
   const year = document.querySelector('.year')
@@ -115,7 +115,7 @@ initDynamicYear();
 
 const initRandomNumbersEffect = function () {
   const randomalyNumsContianers = document.querySelectorAll('.randomaly-containers')
-  let conter = 20
+  let counter = 20
   const randomDisplayFuncionality = function (enties, observe) {
     enties.forEach(entry => {
 
@@ -132,11 +132,11 @@ const initRandomNumbersEffect = function () {
         const randomalyNums = document.querySelectorAll('.randomaly-nums-effects')
         randomalyNums.forEach(numContent => numContent.textContent = randomInt(20, 1))
 
-        conter--
-        if (conter === 0) {
+        counter--
+        if (counter === 0) {
           clearInterval(timer)
           randomalyNums.forEach((numContent, i) => numContent.textContent = originalContentsArr[i])
-          conter = 20
+          counter = 20
         }
       }, 40)
 

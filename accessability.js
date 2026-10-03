@@ -1,13 +1,16 @@
 'use strict'
+
+// Accessibility class handling DOM states and UI helper methods
 class Accessability {
   static #allTextElement = [...document.querySelectorAll('a'), ...document.querySelectorAll('li'), ...document.querySelectorAll('span'), ...document.querySelectorAll('p')];
   static #body = document.body;
   #eventElement;
+
   constructor(eventElement) {
     this.#eventElement = eventElement
   }
-  // API's methods
 
+  // Reset all accessibility styles and classes
   reset() {
     Accessability.#body.classList = ''
     Accessability.#allTextElement.forEach(ele => {
@@ -16,6 +19,7 @@ class Accessability {
     })
   }
 
+  // Read selected text using Speech Synthesis API
   setVoiceReading() {
     if (this.#eventElement.checked) {
       const selection = window.getSelection().toString().trim();
@@ -25,11 +29,13 @@ class Accessability {
     }
   }
 
+  // Toggle theme/sun/moon icons
   switchIcons(EleClass1, EleClass2) {
     document.querySelector(`.${EleClass1}`).classList.toggle('hidden')
     document.querySelector(`.${EleClass2}`).classList.toggle('hidden')
   }
 
+  // Check if target matches feature dataset
   isMatch = function (target, className) {
     if (target.dataset.feature === className)
       return true
@@ -44,16 +50,19 @@ class Accessability {
     return this.#eventElement.closest(`.${this.#getEventEleClass.split(' ')[0]}`)
   }
 
+  // Flexible class addition/removal
   flixbleSetClass(className, method, targetEle = Accessability.#body) {
     if (this.#getEventEleClass !== this.#checkTarget.className) return
     targetEle.classList[method](className)
   }
 
+  // Toggle class on target element
   setClasses(className, targetEle = Accessability.#body) {
     if (this.#getEventEleClass !== this.#checkTarget.className) return
     targetEle.classList.toggle(className)
   }
 
+  // Change font size or line height dynamically
   changeStyle(styleName, unChangedClass = null, eleCollection = Accessability.#allTextElement) {
     const mainMin = window.getComputedStyle(Accessability.#body)[styleName];
     this.#eventElement.setAttribute('min', parseFloat(mainMin));
@@ -63,12 +72,14 @@ class Accessability {
     })
   }
 
+  // Switch between mutually exclusive body classes
   classesSwitch(targetClass, ...classes) {
     if (this.#getEventEleClass !== this.#checkTarget.className) return
     classes.forEach(cla => Accessability.#body.classList.remove(cla))
     Accessability.#body.classList.add(targetClass)
   }
 
+  // Switch icon visibility classes
   iconSwitch(classToSet, targetClass, ...EleClasses) {
     if (this.#getEventEleClass !== this.#checkTarget.className) return
     EleClasses.forEach(ele => {
@@ -77,52 +88,32 @@ class Accessability {
     document.querySelector(`.${targetClass}`).classList.remove(classToSet)
   }
 
-  textBoldAssighn(eleClass, stateNum, ...assighnText) {
+  // Assign bold description text to span
+  textBoldAssign(eleClass, stateNum, ...assignText) {
     const el = document.querySelector(`.${eleClass}`)
-    el.textContent = ''
     if (el) {
-      if (stateNum === 1) {
-        el.textContent = assighnText[stateNum - 1]
-      }
-      if (stateNum === 2) {
-        el.textContent = assighnText[stateNum - 1]
-      }
-      if (stateNum === 3) {
-        el.textContent = assighnText[stateNum - 1]
-        return
+      el.textContent = ''
+      if (stateNum === 1 || stateNum === 2 || stateNum === 3) {
+        el.textContent = assignText[stateNum - 1]
       }
     }
   }
 }
 
+// Handle accessibility feature buttons interactions
 const groupBtnsFunction = function () {
-  // switching for multiple clsses wishes functoinality
-  const switching = function (constracurObj, stateNum, ...elesArr) {
-    if (stateNum === 1) {
-      constracurObj.classesSwitch(elesArr[stateNum - 1], ...elesArr)
-    }
-    if (stateNum === 2) {
-      constracurObj.classesSwitch(elesArr[stateNum - 1], ...elesArr)
-    }
-    if (stateNum === 3) {
-      constracurObj.classesSwitch(elesArr[stateNum - 1], ...elesArr)
+  const switching = function (constructorObj, stateNum, ...elesArr) {
+    if (stateNum >= 1 && stateNum <= 3) {
+      constructorObj.classesSwitch(elesArr[stateNum - 1], ...elesArr)
     }
   }
 
-  // switchig for icons
-  const switchingIcons = function (constracurObj, stateNum, ...iconsArr) {
-    if (stateNum === 1) {
-      constracurObj.iconSwitch('hidden', iconsArr[stateNum - 1], ...iconsArr)
-    }
-    if (stateNum === 2) {
-      constracurObj.iconSwitch('hidden', iconsArr[stateNum - 1], ...iconsArr)
-    }
-    if (stateNum === 3) {
-      constracurObj.iconSwitch('hidden', iconsArr[stateNum - 1], ...iconsArr)
+  const switchingIcons = function (constructorObj, stateNum, ...iconsArr) {
+    if (stateNum >= 1 && stateNum <= 3) {
+      constructorObj.iconSwitch('hidden', iconsArr[stateNum - 1], ...iconsArr)
     }
   }
 
-  // ruler funciona to make the ruler keep tarcking the mouse while moving
   const ruler = document.querySelector('.a11y-reading-ruler')
   const moveRuler = function (e) {
     if (ruler) {
@@ -152,10 +143,10 @@ const groupBtnsFunction = function () {
 
     if (a11yObj.isMatch(target, 'bold-text')) {
       const allBoldClasses = ['a11y-bold-text', 'a11y-bold-text-extra', 'no-bold']
-      const discribeBoldPhrase = ['Bold Text', 'Extra Bold Text', 'Normal']
+      const describeBoldPhrase = ['Bold Text', 'Extra Bold Text', 'Normal']
       boldNum++
       switching(a11yObj, boldNum, ...allBoldClasses)
-      a11yObj.textBoldAssighn('bold-text-span', boldNum, ...discribeBoldPhrase)
+      a11yObj.textBoldAssign('bold-text-span', boldNum, ...describeBoldPhrase)
       if (boldNum === 3) {
         boldNum = 0
       }
@@ -209,39 +200,41 @@ const groupBtnsFunction = function () {
       }
     }
   })
-
 }
 
+// Handle range inputs (Font Size & Line Height)
 const rangeInputFun = function () {
   const rangeGroup = document.querySelector('.range-group')
+  if (!rangeGroup) return
   rangeGroup.addEventListener('input', function (e) {
     const target = e.target.closest('.a11y-range')
-    const rangeGroupObj = new Accessability(target)
     if (!target) return
+    const rangeGroupObj = new Accessability(target)
 
     if (target.classList.contains('range-font-size')) {
       rangeGroupObj.changeStyle('fontSize', 'a11y-panel')
     }
 
-    if (target.classList.contains('range-line-hight')) {
+    if (target.classList.contains('range-line-height')) {
       rangeGroupObj.changeStyle('lineHeight', 'a11y-panel')
     }
   })
 }
 
+// Handle opening and closing accessibility panel
 const handlingOpiningBtn = function () {
-  //btns
   const closeA11yBtn = document.querySelector('.a11y-btn-close')
   const a11yBtn = document.querySelector('.a11y-trigger-btn')
-  //objs
+  const a11yPanel = document.querySelector('.a11y-panel')
+  if (!closeA11yBtn || !a11yBtn || !a11yPanel) return
+
   const a11yBtnObj = new Accessability(a11yBtn)
   const closeA11yBtnObj = new Accessability(closeA11yBtn)
 
-  // eventHandlers
   const btnFun = function (obj) {
     obj.setClasses('is-open', a11yPanel)
   }
-  const a11yPanel = document.querySelector('.a11y-panel')
+
   a11yBtn.addEventListener('click', function () {
     btnFun(a11yBtnObj)
   })
@@ -257,23 +250,27 @@ const handlingOpiningBtn = function () {
   })
 }
 
-const signLangugeFuncionality = function () {
-  const signLangugeBtn = document.querySelector('.a11y-action-btn')
-  const signLangugeOptions = document.querySelector('.sigh-languge-operations')
-  const signLangugeObj = new Accessability(signLangugeBtn)
+// Handle sign language font toggle
+const signLanguageFunctionality = function () {
+  const signLanguageBtn = document.querySelector('.a11y-action-btn')
+  const signLanguageOptions = document.querySelector('.sign-language-operations')
+  if (!signLanguageBtn || !signLanguageOptions) return
+  const signLanguageObj = new Accessability(signLanguageBtn)
 
-  signLangugeBtn.addEventListener('click', function () {
-    if (signLangugeOptions.value === 'all')
-      signLangugeObj.flixbleSetClass('a11y-sign-font', 'add')
+  signLanguageBtn.addEventListener('click', function () {
+    if (signLanguageOptions.value === 'all')
+      signLanguageObj.flixbleSetClass('a11y-sign-font', 'add')
 
-    if (signLangugeOptions.value === 'none') {
-      signLangugeObj.flixbleSetClass('a11y-sign-font', 'remove')
+    if (signLanguageOptions.value === 'none') {
+      signLanguageObj.flixbleSetClass('a11y-sign-font', 'remove')
     }
   })
 }
 
+// Handle Text to Speech voice reading feature
 const voice = function () {
   const voiceBtn = document.querySelector('.a11y-checkbox');
+  if (!voiceBtn) return
   const voiceBtnObj = new Accessability(voiceBtn)
 
   document.addEventListener('mouseup', function () {
@@ -281,8 +278,10 @@ const voice = function () {
   })
 }
 
-const resetFunctionlity = function () {
+// Handle reset button functionality
+const resetFunctionality = function () {
   const resetBtn = document.querySelector('.a11y-btn-reset')
+  if (!resetBtn) return
   const resetObj = new Accessability(resetBtn)
   resetBtn.addEventListener('click', function () {
     resetObj.reset()
@@ -292,6 +291,6 @@ const resetFunctionlity = function () {
 groupBtnsFunction()
 rangeInputFun()
 handlingOpiningBtn()
-signLangugeFuncionality()
+signLanguageFunctionality()
 voice()
-resetFunctionlity()
+resetFunctionality()
